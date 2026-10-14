@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ramiza.site guestbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="intro">
+      <h1>ramiza.site</h1>
+      <p>A guestbook running on three containers. Leave a note and it travels through every tier below.</p>
+    </header>
+
+    <section class="stack" aria-label="Connection status of each tier">
+      <div class="tier" id="tier-frontend" data-state="ok">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="tier-name">Frontend</span>
+        <span class="tier-detail">Nginx</span>
+      </div>
+      <span class="link" id="link-api" aria-hidden="true"></span>
+      <div class="tier" id="tier-backend" data-state="checking">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="tier-name">Backend</span>
+        <span class="tier-detail">Node API</span>
+      </div>
+      <span class="link" id="link-db" aria-hidden="true"></span>
+      <div class="tier" id="tier-database" data-state="checking">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="tier-name">Database</span>
+        <span class="tier-detail">MySQL</span>
+      </div>
+    </section>
+    <p class="status-text" id="status-text" role="status">Checking the backend and database…</p>
+
+    <form class="note-form" id="note-form" novalidate>
+      <label for="name">Your name</label>
+      <input id="name" name="name" type="text" maxlength="100" autocomplete="name" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="3" maxlength="500" required></textarea>
+
+      <div class="form-footer">
+        <p class="form-error" id="form-error" role="alert"></p>
+        <button type="submit" id="submit-btn">Sign the guestbook</button>
+      </div>
+    </form>
+
+    <section aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes from visitors</h2>
+      <ul class="notes" id="notes"></ul>
+      <p class="empty" id="empty" hidden>No notes yet. Be the first to sign the guestbook.</p>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
